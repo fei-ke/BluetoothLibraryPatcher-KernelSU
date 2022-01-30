@@ -66,7 +66,7 @@ patchlib() {
     ui_print "  created in your internal storage to github issue or XDA thread"
     ui_print  " "
     ui_print  "- Opening support webpage in 5 seconds"
-    (sleep 5 && am start -a android.intent.action.VIEW -d https://github.com/Magisk-Modules-Repo/BluetoothLibraryPatcher/blob/master/SUPPORT.md >/dev/null) &
+    (sleep 5 && am start -a android.intent.action.VIEW -d https://github.com/3arthur6/BluetoothLibraryPatcher/blob/master/SUPPORT.md >/dev/null) &
     rm -rf $MODPATH
     abort
   fi
