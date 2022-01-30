@@ -43,7 +43,7 @@ if [[ $var == 3 ]] && ! `$bb xxd -p $lib|$bb tr -d '\n'|$bb grep -qm1 ${hex[$var
     var=1
   fi
 fi
-if ( [[ $var == 1 ]] && [[ $API -ge 29 ]] ) || ( [[ $var == 2 ]] && [[ $API -ge 28 ]] ) ; then
+if ( [[ $var == 1 ]] && [[ $API -ge 29 ]] ) || ( [[ $var == 2 ]] && [[ $API -ge 28 ]] && [[ $API -le 29 ]] ) || ( [[ $var == 3 ]] && [[ $API -ge 29 ]] ) ; then
   hex[$var$API]=`$bb xxd -p $lib|$bb tr -d '\n'|$bb grep -om1 ${hex[$var$API]}`
 fi
 if [[ -z `$bb xxd -p $lib|$bb tr -d '\n'|$bb grep -om1 ${hex[$var$API]}` ]] ; then
