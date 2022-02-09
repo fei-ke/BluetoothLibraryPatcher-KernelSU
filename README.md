@@ -21,7 +21,7 @@ $ i=`grep -lr 'security.wsm' /vendor/etc/vintf` && [ ! -z $i ] && sed -i "$((`aw
 $ mount -o remount,ro /vendor
 ```
 
-Alternatively, instead of installing the Magisk module and running the commands, flash the zip file (BluetoothLibraryPatcher_twrp_X.X.X.zip​) meant for TWRP recovery found on [XDA](https://forum.xda-developers.com/galaxy-note-9/development/zip-libbluetooth-patcher-fix-losing-t4017735) under 'Links'.
+Alternatively, instead of installing the Magisk module and running the commands, flash the zip file from [this Github repo releases](https://github.com/3arthur6/BluetoothLibraryPatcher/releases) (BluetoothLibraryPatcher_twrp_X.X.X.zip) meant for TWRP recovery.
 
 ## Credits
 
@@ -128,3 +128,7 @@ Alternatively, instead of installing the Magisk module and running the commands,
 
 - Update for Magisk v24.0
 - Misc updates
+
+### v2.4.1
+
+- Fix broken qcom patch
