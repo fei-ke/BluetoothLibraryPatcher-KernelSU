@@ -17,7 +17,7 @@ Due to limitations in Magisk, a manual step is required to fix pairing issues wi
 ```bash
 $ su
 $ mount -o remount,rw /vendor
-$ i=`grep -lr 'security.wsm' /vendor/etc/vintf` && [ ! -z $i ] && sed -i "$((`awk '/security.wsm/ {print FNR}' $i`-1)),/<\/hal>/d" $i
+$ for i in `grep -lr 'security.wsm' /vendor/etc/vintf`; do [ ! -z $i ] && sed -i "$((`awk '/security.wsm/ {print FNR}' $i`-1)),/<\/hal>/d" $i; done
 $ mount -o remount,ro /vendor
 ```
 
