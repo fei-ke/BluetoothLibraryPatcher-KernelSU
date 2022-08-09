@@ -6,7 +6,7 @@ bb=/data/adb/magisk/busybox
 qcom=`$bb grep -qw androidboot.hardware=qcom /proc/cmdline && echo 'true' || echo 'false'`
 
 # default(mostly arm64 exynos)=1   arm=2   qcom=3
-var=`if ! $IS64BIT || [[ $API -le 25 ]]; then echo 2; elif $qcom && [[ $API -le 30 ]]; then echo 3; else echo 1; fi`
+var=`if ! $IS64BIT || [[ $API -le 25 ]]; then echo 2; elif $qcom && [[ $API -ge 28 ]]; then echo 3; else echo 1; fi`
 
 hex=( \
 # default
