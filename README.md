@@ -132,3 +132,8 @@ Alternatively, instead of installing the Magisk module and running the commands,
 ### v2.4.1
 
 - Fix broken qcom patch
+
+### v2.4.2
+
+- Add support to Android 13
+- Optimize debug stuff
