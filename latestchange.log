@@ -1,1 +1,2 @@
-- Fix broken qcom patch
+- Add support to Android 13
+- Optimize debug stuff
