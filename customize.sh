@@ -49,8 +49,8 @@ extract() {
 
 patchlib() {
   ui_print "- Applying patch"
-  pre=`cat $TMPDIR/patch|sed -n '1 p'`
-  post=`cat $TMPDIR/patch|sed -n '2 p'`
+  pre=`grep pre_hex $TMPDIR/tmp|cut -d '=' -f2`
+  post=`grep post_hex $TMPDIR/tmp|cut -d '=' -f2`
   if [[ $pre == already ]] ; then
     ui_print "- Library already (system-ly) patched!"
     abort
@@ -58,7 +58,7 @@ patchlib() {
     ui_print "- Successfully patched!"
   else
     ui_print "- Library not supported!"
-    echo -e "BOOTMODE=$BOOTMODE\nAPI=$API\nIS64BIT=$IS64BIT\nlib=$lib" > $TMPDIR/debug
+    echo -e "BOOTMODE=$BOOTMODE\nAPI=$API\nIS64BIT=$IS64BIT\nlib=$lib" >> $TMPDIR/tmp
     cp -f $lib $TMPDIR
     tar c -f /sdcard/BluetoothLibPatcher-files.tar -C $TMPDIR `ls $TMPDIR|sed -E '/bash|hexpatch\.sh/d'`
     ui_print  " "

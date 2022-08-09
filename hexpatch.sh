@@ -60,4 +60,4 @@ if [[ -z `$bb xxd -p $lib|$bb tr -d '\n'|$bb grep -om1 ${hex[$var$API]}` ]] ; th
     fi
   fi
 fi
-echo -e "${hex[$var$API]}\n${hex[1$var$API]}\nvar=$var\nbl=$($bb grep -o androidboot.bootloader=.* /proc/cmdline|$bb cut -d ' ' -f1|$bb cut -d '=' -f2)" > $TMPDIR/patch
+echo -e "pre_hex=${hex[$var$API]}\npost_hex=${hex[1$var$API]}\nvar=$var\nchip=`$bb grep -o androidboot.hardware=.* /proc/cmdline|$bb cut -d ' ' -f1|$bb cut -d '=' -f2`\nbl=`$bb grep -o androidboot.bootloader=.* /proc/cmdline|$bb cut -d ' ' -f1|$bb cut -d '=' -f2`" >> $TMPDIR/tmp
