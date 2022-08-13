@@ -5,7 +5,7 @@ check() {
   samsung=`grep -Eqw "androidboot.odin_download|androidboot.warranty_bit|sec_debug" /proc/cmdline && echo 'true' || echo 'false'`
   if $BOOTMODE ; then
     ui_print "- Magisk Manager installation"
-    sys="`magisk --path`/.magisk/mirror/system"
+    sys=`magisk --path`/.magisk/mirror/system
   else
     ui_print "- Recovery installation"
     sys=`dirname $(find / -mindepth 2 -maxdepth 3 -path "*system/build.prop"|head -1)`
@@ -41,7 +41,7 @@ extract() {
     abort
   else
     ui_print "- Copying library from system to module"
-    mod_path="$MODPATH/`echo $lib|grep -o system.*`"
+    mod_path=$MODPATH/`echo $lib|grep -o system.*`
     mkdir -p `dirname $mod_path`
     cp -af $lib $mod_path
   fi
@@ -75,7 +75,23 @@ patchlib() {
 otasurvival() {
   ui_print "- Creating OTA survival service"
   cp -f $ZIPFILE $MODPATH/module.zip
-  sed -i "s|previouslibmd5sum_tmp|previouslibmd5sum=`md5sum $lib|cut -d ' ' -f1`|" $MODPATH/service.sh         
+  sed -i "s|previouslibmd5sum_tmp|previouslibmd5sum=`md5sum $lib|cut -d ' ' -f1`" $MODPATH/service.sh
+}
+
+patchmanifest() {
+  if [[ $MAGISK_VER == *-delta ]] && [[ -d `magisk --path`/.magisk/mirror/early-mount ]] ; then
+    ui_print "- Magisk Delta fork detected"
+    ui_print "- Applying gear watch fix"
+    mkdir -p `magisk --path`/.magisk/mirror/early-mount/system/vendor/vintf/manifest
+    for i in `grep -lr 'security.wsm' /vendor/etc/vintf`
+    do
+      if [[ ! -z $i ]] ; then
+        rm -f `magisk --path`/.magisk/mirror/early-mount/system$i
+        cp -af $i `magisk --path`/.magisk/mirror/early-mount/system$i
+        sed -i $((`awk '/security.wsm/ {print FNR}' $i`-1)),/<\/hal>/d `magisk --path`/.magisk/mirror/early-mount/system$i
+      fi
+    done
+  fi
 }
 
 check
@@ -83,3 +99,4 @@ search
 extract
 patchlib
 otasurvival
+patchmanifest
