@@ -143,3 +143,9 @@ Alternatively, instead of installing the Magisk module and running the commands,
 - Fix qcom detection logic
 - Add gear watch patch support for Magisk Delta fork
 - Fix twrp patch
+
+### v2.4.4
+
+- Optimize hex sequences
+- Fix support for some old mediatek devices
+- Revert adding support for Android 13, module not needed anymore
