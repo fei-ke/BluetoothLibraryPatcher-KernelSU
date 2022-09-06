@@ -38,105 +38,16 @@ Alternatively, instead of installing the Magisk module and running the commands,
 
 ## Changelog
 
-### v1.0
+### v2.5
 
-- Initial release
+- Bring back support for Android 12L (API 32)
+- Drop support for Android 13 (API 33) and above
 
-### v1.1
+### v2.4.4
 
-- Add verification point, to know if we successfully hexpatch
-
-### v1.2
-
-- Add recovery installation support
-
-### v1.3
-
-- Modify hexpatch (more safer patch)
-
-### v1.4
-
-- Add support for chinese variants
-
-### v1.5
-
-- Check we try to apply the patch on a Samsung device & add missing chinese Note10+ 5G variant
-
-### v1.6
-
-- Fix brand and model detection for magisk manager and recovery installation
-
-### v1.7
-
-- Add support for chinese/global snapdragon on Pie
-- Add support for chinese/global S/N9 snapdragon on Q & simplify the hexpatch
-
-### v1.8
-
-- Add support for A6, A10, A80, some S10e and N10 variants
-- Apply the only known qcom fix to all of them
-- Add some checks to avoid false negatives
-
-### v1.9
-
-- Support more arm devices
-- Auto create tar with needed files in internal storage to fix unsupported devices
-
-### v2.0
-
-- Support more devices
-- Misc optimizations
-
-### v2.1
-
-- Android 11 support
-- Android Nougat support
-- Misc optimizations
-
-### v2.1.1
-
-- Divers Android 11 fixes
-
-### v2.2
-
-- Large rewrite
-- Detect now OTAs and reapply the patch if needed
-
-### v2.2.1
-
-- Misc fixes
-
-### v2.2.2
-
-- Fix OTA survival script
-
-### v2.2.3
-
-- Handle library changes from latest A505FN firmware and possibly others devices
-
-### v2.3
-
-- Android 12 support
-- Handle few specific devices
-
-### v2.3.1
-
-- Fix qcoms on Android 12
-- Add A105F on Android 11
-
-### v2.4.0
-
-- Update for Magisk v24.0
-- Misc updates
-
-### v2.4.1
-
-- Fix broken qcom patch
-
-### v2.4.2
-
-- Add support to Android 13
-- Optimize debug stuff
+- Optimize hex sequences
+- Fix support for some old mediatek devices
+- Revert adding support for Android 13, module not needed anymore
 
 ### v2.4.3
 
@@ -144,8 +55,102 @@ Alternatively, instead of installing the Magisk module and running the commands,
 - Add gear watch patch support for Magisk Delta fork
 - Fix twrp patch
 
-### v2.4.4
+### v2.4.2
 
-- Optimize hex sequences
-- Fix support for some old mediatek devices
-- Revert adding support for Android 13, module not needed anymore
+- Add support to Android 13
+- Optimize debug stuff
+
+### v2.4.1
+
+- Fix broken qcom patch
+
+### v2.4.0
+
+- Update for Magisk v24.0
+- Misc updates
+
+### v2.3.1
+
+- Fix qcoms on Android 12
+- Add A105F on Android 11
+
+### v2.3
+
+- Android 12 support
+- Handle few specific devices
+
+### v2.2.3
+
+- Handle library changes from latest A505FN firmware and possibly others devices
+
+### v2.2.2
+
+- Fix OTA survival script
+
+### v2.2.1
+
+- Misc fixes
+
+### v2.2
+
+- Large rewrite
+- Detect now OTAs and reapply the patch if needed
+
+### v2.1.1
+
+- Divers Android 11 fixes
+
+### v2.1
+
+- Android 11 support
+- Android Nougat support
+- Misc optimizations
+
+### v2.0
+
+- Support more devices
+- Misc optimizations
+
+### v1.9
+
+- Support more arm devices
+- Auto create tar with needed files in internal storage to fix unsupported devices
+
+### v1.8
+
+- Add support for A6, A10, A80, some S10e and N10 variants
+- Apply the only known qcom fix to all of them
+- Add some checks to avoid false negatives
+
+### v1.7
+
+- Add support for chinese/global snapdragon on Pie
+- Add support for chinese/global S/N9 snapdragon on Q & simplify the hexpatch
+
+### v1.6
+
+- Fix brand and model detection for magisk manager and recovery installation
+
+### v1.5
+
+- Check we try to apply the patch on a Samsung device & add missing chinese Note10+ 5G variant
+
+### v1.4
+
+- Add support for chinese variants
+
+### v1.3
+
+- Modify hexpatch (more safer patch)
+
+### v1.2
+
+- Add recovery installation support
+
+### v1.1
+
+- Add verification point, to know if we successfully hexpatch
+
+### v1.0
+
+- Initial release
