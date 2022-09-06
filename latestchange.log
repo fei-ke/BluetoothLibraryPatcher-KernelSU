@@ -1,3 +1,2 @@
-- Optimize hex sequences
-- Fix support for some old mediatek devices
-- Revert adding support for Android 13, module not needed anymore
+- Bring back support for Android 12L (API 32)
+- Drop support for Android 13 (API 33) and above
