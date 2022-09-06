@@ -1,6 +1,6 @@
 {
-    "version": "v2.4.4",
-    "versionCode": "244",
-    "zipUrl": "https://github.com/3arthur6/BluetoothLibraryPatcher/releases/download/v2.4.4/BluetoothLibraryPatcher_magisk_2.4.4.zip",
+    "version": "v2.5",
+    "versionCode": "250",
+    "zipUrl": "https://github.com/3arthur6/BluetoothLibraryPatcher/releases/download/v2.5/BluetoothLibraryPatcher_magisk_2.5.zip",
     "changelog": "https://raw.githubusercontent.com/3arthur6/BluetoothLibraryPatcher/master/latestchange.log"
 }
