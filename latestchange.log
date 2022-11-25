@@ -1,2 +1,1 @@
-- Bring back support for Android 12L (API 32)
-- Drop support for Android 13 (API 33) and above
+- Add support for arm devices on A12

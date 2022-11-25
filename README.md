@@ -38,6 +38,10 @@ Alternatively, instead of installing the Magisk module and running the commands,
 
 ## Changelog
 
+### v2.5.1
+
+- Add support for arm devices on A12
+
 ### v2.5
 
 - Bring back support for Android 12L (API 32)
