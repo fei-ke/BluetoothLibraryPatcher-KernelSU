@@ -20,9 +20,6 @@ check() {
   elif [[ $API -lt 24 ]] ; then
     ui_print "- Only for Android 7.0 (Nougat) and above"
     abort
-  elif [[ $API -ge 33 ]] ; then
-    ui_print "- This module isn't needed anymore on Android 13 and above"
-    abort
   fi
 }
 
