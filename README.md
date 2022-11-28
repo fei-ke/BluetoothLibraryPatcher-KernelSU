@@ -38,6 +38,10 @@ Alternatively, instead of installing the Magisk module and running the commands,
 
 ## Changelog
 
+### v2.6.1
+
+- Fix OTA survival script on Android 13
+
 ### v2.6
 
 - Adding back support for Android 13
