@@ -12,7 +12,7 @@ This patch is NOT applicable with an aosp rom, only samsung stock/based.
 
 Due to limitations in Magisk, a manual step is required to fix pairing issues with Galaxy Watch devices. After installing the Magisk module, use a command line (like Terminal Emulator or Termux) to run the following commands, then reboot:
 
-*Beware! /!\ Owners of the S21 series cannot use these commands (or you have to be SURE your vendor partition isn't read only or full) and must instead use the zip bellow to flash using TWRP. The commands below could brick your device /!\*
+*Beware! /!\ Starting from the S21 serie you can not use these commands (or you have to be SURE your vendor partition isn't read only or full) and must instead use the zip bellow to flash using TWRP. The commands below could brick your device /!\*
 
 ```bash
 $ su
@@ -21,7 +21,7 @@ $ for i in `grep -lr 'security.wsm' /vendor/etc/vintf`; do [ ! -z $i ] && sed -i
 $ mount -o remount,ro /vendor
 ```
 
-Alternatively, instead of installing the Magisk module and running the commands, flash the zip file from [this Github repo releases](https://github.com/3arthur6/BluetoothLibraryPatcher/releases) (BluetoothLibraryPatcher_twrp_X.X.X.zip) meant for TWRP recovery.
+Alternatively with Android 12L and below, instead of installing the Magisk module and running the commands, flash the zip file from [this Github repo releases](https://github.com/3arthur6/BluetoothLibraryPatcher/releases) (BluetoothLibraryPatcher_twrp_X.X.X.zip) meant for TWRP recovery.
 
 ## Credits
 
