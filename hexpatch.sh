@@ -64,7 +64,7 @@ if [[ -z `$bb xxd -p $lib|$bb tr -d '\n'|$bb grep -om1 ${hex[$var$API]}` ]] ; th
     elif [[ $API == 27 ]] && `$bb xxd -p $lib|$bb tr -d '\n'|$bb grep -qm1 ${hex[${var}26]}` ; then
       hex[$var$API]=${hex[${var}26]}
       hex[1$var$API]=${hex[1${var}26]}
-	fi
+    fi
   fi
 fi
 echo -e "pre_hex=${hex[$var$API]}\npost_hex=${hex[1$var$API]}\nvar=$var\nchip=`$bb grep -o androidboot.hardware=.* /proc/cmdline|$bb cut -d ' ' -f1|$bb cut -d '=' -f2`\nbl=`$bb grep -o androidboot.bootloader=.* /proc/cmdline|$bb cut -d ' ' -f1|$bb cut -d '=' -f2`" >> $TMPDIR/tmp
