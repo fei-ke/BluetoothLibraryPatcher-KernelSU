@@ -38,6 +38,11 @@ Alternatively with Android 12L and below, instead of installing the Magisk modul
 
 ## Changelog
 
+### v2.6.2
+
+- Add support for arm devices on A13
+- Process 7z only on A13
+
 ### v2.6.1
 
 - Fix OTA survival script on Android 13

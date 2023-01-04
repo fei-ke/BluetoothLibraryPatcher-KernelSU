@@ -1,1 +1,2 @@
-- Fix OTA survival script on Android 13
+- Add support for arm devices on A13
+- Process 7z only on A13
