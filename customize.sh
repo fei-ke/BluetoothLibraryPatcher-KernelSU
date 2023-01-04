@@ -33,11 +33,12 @@ search() {
   if [[ $API -le 32 ]] ; then
     lib=`find $sys/lib*|grep -E "\/(libbluetooth|bluetooth\.default)\.so$"|tail -n 1`
   else
+    bits=`$IS64BIT && echo '64'`
     unzip -p $ZIPFILE 7z.tar.xz|tar x -J -C $TMPDIR 7z
     chmod 755 $TMPDIR/7z
     unzip -q $sys/apex/com.android.btservices.apex apex_payload.img -d $TMPDIR
-    $TMPDIR/7z x -y -bso0 $TMPDIR/apex_payload.img lib64/libbluetooth_jni.so -o$TMPDIR/system
-    lib=$TMPDIR/system/lib64/libbluetooth_jni.so
+    $TMPDIR/7z x -y -bso0 $TMPDIR/apex_payload.img lib$bits/libbluetooth_jni.so -o$TMPDIR/system
+    lib=$TMPDIR/system/lib$bits/libbluetooth_jni.so
   fi
   export TMPDIR API IS64BIT lib
   $TMPDIR/bash $TMPDIR/hexpatch.sh

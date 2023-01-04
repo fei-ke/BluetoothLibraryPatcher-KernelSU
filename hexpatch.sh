@@ -19,6 +19,7 @@ hex=( \
 [127]=88000034e8030032 [1127]=1f2003d5e8031f2a\
 [126]=88000034e8030032 [1126]=1f2003d5e8031f2a\
 # arm
+[233]=4e7e4440bb [1233]=4e7e4432e0 \
 [231]=20b14ff000084ff000095ae0 [1231]=00bf4ff000084ff0000964e0 \
 [230]=18b14ff0000b00254a [1230]=00204ff0000b002554 \
 [229]=..b100250120 [1229]=00bf00250020 \
@@ -55,7 +56,7 @@ if [[ -z `$bb xxd -p $lib|$bb tr -d '\n'|$bb grep -om1 ${hex[$var$API]}` ]] ; th
   elif [[ $var == 1 ]] && [[ $API == 29 ]] && hex[4$API]=`$bb xxd -p $lib|$bb tr -d '\n'|$bb grep -om1 ${hex[4$API]}` && [[ ! -z ${hex[4$API]} ]] ; then
     var=4
   elif [[ $var == 2 ]] ; then
-    if [[ $API -ge 29 ]] ; then
+    if [[ $API -ge 29 ]] && [[ $API -le 30 ]] ; then
       if `$bb xxd -p $lib|$bb tr -d '\n'|$bb grep -qm1 ${hex[5$API]}` ; then
         var=5
       elif `$bb xxd -p $lib|$bb tr -d '\n'|$bb grep -qm1 ${hex[6$API]}` ; then
