@@ -35,8 +35,8 @@ hex=( \
 # what is happening samsung
 [429]=....0034f3031f2af4031f2a....0014 [1429]=1f2003d5f3031f2af4031f2a47000014 \
 # what again (T510)
-[529]=10b1002400254a [1529]=00200024002556 \
 [530]=18b100244ff0000b4d [1530]=002000244ff0000b57 \
+[529]=10b1002400254a [1529]=00200024002556 \
 # ... (T595)
 [629]=10b1002400254a [1629]=00200024002558 )
 
@@ -50,7 +50,7 @@ fi
 if ( [[ $var == 1 ]] && [[ $API -ge 29 ]] ) || ( [[ $var == 2 ]] && [[ $API -ge 28 ]] && [[ $API -le 29 ]] ) ; then
   hex[$var$API]=`$bb xxd -p $lib|$bb tr -d '\n'|$bb grep -om1 ${hex[$var$API]}`
 fi
-if [[ -z `$bb xxd -p $lib|$bb tr -d '\n'|$bb grep -om1 ${hex[$var$API]}` ]] ; then
+if ! `$bb xxd -p $lib|$bb tr -d '\n'|$bb grep -qm1 ${hex[$var$API]}` ; then
   if `$bb xxd -p $lib|$bb tr -d '\n'|$bb grep -qm1 ${hex[1$var$API]}` ; then
     hex[$var$API]=already
   elif [[ $var == 1 ]] && [[ $API == 29 ]] && hex[4$API]=`$bb xxd -p $lib|$bb tr -d '\n'|$bb grep -om1 ${hex[4$API]}` && [[ ! -z ${hex[4$API]} ]] ; then

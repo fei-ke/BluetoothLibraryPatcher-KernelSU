@@ -44,18 +44,6 @@ search() {
   $TMPDIR/bash $TMPDIR/hexpatch.sh
 }
 
-extract() {
-  if [ ! -f $lib ] ; then
-    ui_print "- Library not found!"
-    abort
-  else
-    ui_print "- Copying library from system to module"
-    mod_path=$MODPATH/`echo $lib|grep -o system.*`
-    mkdir -p `dirname $mod_path`
-    cp -af $lib $mod_path
-  fi
-}
-
 patchlib() {
   ui_print "- Applying patch"
   pre=`grep pre_hex $TMPDIR/tmp|cut -d '=' -f2`
@@ -63,10 +51,15 @@ patchlib() {
   if [[ $pre == already ]] ; then
     ui_print "- Library already (system-ly) patched!"
     abort
-  elif [[ ! -z $pre ]] && `/data/adb/magisk/magiskboot hexpatch $mod_path $pre $post` ; then
+  elif [[ -f $lib ]] && [[ ! -z $pre ]] ; then
+    mod_path=$MODPATH/`echo $lib|grep -o system.*`
+    mkdir -p `dirname $mod_path`
+    xxd -p -c `stat -c %s $lib` $lib|sed "s/$pre/$post/"|xxd -pr -c `stat -c %s $lib` > $mod_path
+  fi
+  if [[ -f $lib ]] && `xxd -p $mod_path|tr -d ' \n'|grep -qm1 $post` ; then
     ui_print "- Successfully patched!"
   else
-    ui_print "- Library not supported!"
+    ui_print "- Patch failed!"
     echo -e "BOOTMODE=$BOOTMODE\nAPI=$API\nIS64BIT=$IS64BIT\nlib=$lib" >> $TMPDIR/tmp
     cp -f $lib $TMPDIR
     tar c -f /sdcard/BluetoothLibPatcher-files.tar -C $TMPDIR `ls $TMPDIR|sed -E '/bash|hexpatch\.sh|7z/d'`
@@ -111,7 +104,6 @@ patchmanifest() {
 
 check
 search
-extract
 patchlib
 otasurvival
 patchmanifest
