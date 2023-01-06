@@ -63,13 +63,9 @@ patchlib() {
     echo -e "BOOTMODE=$BOOTMODE\nAPI=$API\nIS64BIT=$IS64BIT\nlib=$lib" >> $TMPDIR/tmp
     cp -f $lib $TMPDIR
     tar c -f /sdcard/BluetoothLibPatcher-files.tar -C $TMPDIR `ls $TMPDIR|sed -E '/bash|hexpatch\.sh|7z/d'`
-    ui_print  " "
-    ui_print "- To get support upload BluetoothLibPatcher-files.tar"
-    ui_print "  created in your internal storage to github issue or XDA thread"
-    ui_print  " "
-    ui_print  "- Opening support webpage in 5 seconds"
-    (sleep 5 && am start -a android.intent.action.VIEW -d https://github.com/3arthur6/BluetoothLibraryPatcher/blob/master/SUPPORT.md >/dev/null) &
-    rm -rf $MODPATH
+    ui_print " "
+    ui_print "- Opening support webpage in 10 seconds"
+    (sleep 10 && am start -a android.intent.action.VIEW -d https://github.com/3arthur6/BluetoothLibraryPatcher/blob/master/SUPPORT.md >/dev/null) &
     abort
   fi
 }
