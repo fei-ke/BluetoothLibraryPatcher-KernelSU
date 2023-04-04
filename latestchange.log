@@ -1,2 +1,2 @@
-- Add support for arm devices on A13
-- Process 7z only on A13
+- Add A137F support & fix regressions
+- TWRP zip: Apply gear watch fix first

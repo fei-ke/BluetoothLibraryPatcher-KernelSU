@@ -38,6 +38,11 @@ Alternatively with Android 12L and below, instead of installing the Magisk modul
 
 ## Changelog
 
+### v2.6.3
+
+- Add A137F support & fix regressions
+- TWRP zip: Apply gear watch fix first
+
 ### v2.6.2
 
 - Add support for arm devices on A13
