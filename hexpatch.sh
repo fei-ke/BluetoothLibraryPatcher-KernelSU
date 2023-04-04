@@ -34,11 +34,13 @@ hex=( \
 [328]=7f1d0071e91700f9e83c0054 [1328]=7f1d0071e91700f9e7010014 \
 # what is happening samsung
 [429]=....0034f3031f2af4031f2a....0014 [1429]=1f2003d5f3031f2af4031f2a47000014 \
+# A137F
+[531]=10b1002500244ce0 [1531]=00bf0025002456e0 \
 # what again (T510)
 [530]=18b100244ff0000b4d [1530]=002000244ff0000b57 \
-[529]=10b1002400254a [1529]=00200024002556 \
+[529]=44387810b1002400254a [1529]=44387800200024002556 \
 # ... (T595)
-[629]=10b1002400254a [1629]=00200024002558 )
+[629]=90387810b1002400254a [1629]=90387800200024002558 )
 
 if [[ $var == 3 ]] && ! `$bb xxd -p $lib|$bb tr -d '\n'|$bb grep -qm1 ${hex[$var$API]}` ; then
   if `$bb xxd -p $lib|$bb tr -d '\n'|$bb grep -qm1 ${hex[1$var$API]}` ; then
@@ -56,7 +58,7 @@ if ! `$bb xxd -p $lib|$bb tr -d '\n'|$bb grep -qm1 ${hex[$var$API]}` ; then
   elif [[ $var == 1 ]] && [[ $API == 29 ]] && hex[4$API]=`$bb xxd -p $lib|$bb tr -d '\n'|$bb grep -om1 ${hex[4$API]}` && [[ ! -z ${hex[4$API]} ]] ; then
     var=4
   elif [[ $var == 2 ]] ; then
-    if [[ $API -ge 29 ]] && [[ $API -le 30 ]] ; then
+    if [[ $API -ge 29 ]] && [[ $API -le 31 ]] ; then
       if `$bb xxd -p $lib|$bb tr -d '\n'|$bb grep -qm1 ${hex[5$API]}` ; then
         var=5
       elif `$bb xxd -p $lib|$bb tr -d '\n'|$bb grep -qm1 ${hex[6$API]}` ; then
