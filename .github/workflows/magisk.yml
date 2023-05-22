@@ -1,0 +1,32 @@
+name: CI
+
+on:
+  push:
+    branches: [ "ksu" ]
+  pull_request:
+    branches: [ "ksu" ]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Read value from Properties-file
+        id: read_prop
+        uses: christian-draeger/read-properties@1.1.0
+        with:
+          path: './module.prop'
+          properties: 'version'
+
+      - name: Upload Release
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ github.event.repository.name }}-${{ steps.read_prop.outputs.version }}
+          path: |
+            *
+            !.*
+            
