@@ -3,7 +3,10 @@
 
 check() {
   samsung=`grep -Eqw "androidboot.odin_download|androidboot.warranty_bit|sec_debug" /proc/cmdline && echo 'true' || echo 'false'`
-  if $BOOTMODE ; then
+  if $KSU ; then
+    ui_print "- KernelSU installation"
+    sys=/system
+  elif $BOOTMODE ; then
     ui_print "- Magisk Manager installation"
     sys=`magisk --path`/.magisk/mirror/system
   else
@@ -101,5 +104,9 @@ patchmanifest() {
 check
 search
 patchlib
-otasurvival
-patchmanifest
+
+if ! $KSU ; then
+  otasurvival
+  patchmanifest
+fi
+

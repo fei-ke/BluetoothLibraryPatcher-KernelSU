@@ -2,6 +2,10 @@
 # ota survival script
 # by 3arthur6
 
+if $KSU ; then
+  exit 0
+fi
+
 MODDIR=${0%/*}
 previouslibmd5sum_tmp
 
